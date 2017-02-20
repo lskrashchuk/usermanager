@@ -1,0 +1,12 @@
+.classpath
+build/
+bin/
+.settings/
+.gradle/
+settings.gradle
+my_first_module.js
+gradlew.bat
+gradlew
+gradle/
+test.html
+test.js
