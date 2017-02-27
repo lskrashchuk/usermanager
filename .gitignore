@@ -10,3 +10,15 @@ gradlew
 gradle/
 test.html
 test.js
+client/.editorconfig
+client/node_modules/
+*.js
+*.map
+client/.idea/
+client/.travis.yml
+client/bs-config.e2e.json
+client/bs-config.json
+client/e2e/
+client/non-essential-files.osx.txt
+client/non-essential-files.txt
+client/src/app/app.component.spec.ts
