@@ -1,0 +1,24 @@
+<section class="userapp">
+  <header class="header">
+    <h1>Пользователи</h1>
+
+    <input class="new-user" placeholder="Добавить пользователя" autofocus="" [(ngModel)]="newUser.firstName" (keyup.enter)="addUser()">
+   </header>
+
+  <section class="main" *ngIf="users.length > 0">
+    <ul class="user-list">
+      <li *ngFor="let user of users" [class.actived]="user.isActive">
+        <div class="view">
+          <input class="toggle" type="checkbox" (click)="toggleUserActive(user)" [checked]="user.isActive">
+
+          <label>{{user.firstName}}</label>
+          <button class="destroy" (click)="removeUser(user)"></button>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <footer class="footer" >
+    <span class="user-count">Всего пользователей: <strong>{{users.length}}</strong></span>
+  </footer>
+</section>
