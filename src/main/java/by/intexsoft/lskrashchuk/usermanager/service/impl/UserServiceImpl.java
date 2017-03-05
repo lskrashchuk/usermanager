@@ -18,7 +18,7 @@ import by.intexsoft.lskrashchuk.usermanager.service.UserService;
 @Service
 public class UserServiceImpl implements UserService
 {
-	private static Logger LOGGER = LoggerFactory.getLogger(UserServiceImplTest.class);
+	private static Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
 
 	@Autowired
 	private UserRepository userRepository;
