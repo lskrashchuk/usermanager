@@ -18,10 +18,15 @@ import by.intexsoft.lskrashchuk.usermanager.service.UserService;
 @Service
 public class UserServiceImpl implements UserService
 {
-	private static Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
+	private static Logger LOGGER = LoggerFactory.getLogger(UserServiceImplTest.class);
 
 	@Autowired
 	private UserRepository userRepository;
+
+	public void setUserRepository(UserRepository userRepository)
+	{
+		this.userRepository = userRepository;
+	}
 
 	/**
 	 * The method finds all users
