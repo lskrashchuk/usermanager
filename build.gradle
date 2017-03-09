@@ -1,5 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'war'
+apply plugin: 'jacoco'
 
 repositories {
 	mavenLocal()
@@ -24,6 +25,8 @@ dependencies {
  	testCompile 'junit:junit:4.12'
  	testCompile 'org.mockito:mockito-all:2.0.2-beta'
 	testCompile 'org.springframework:spring-test:4.3.6.RELEASE'
+ 	testCompile 'org.testng:testng:6.10'
  	
  }
+ 
 

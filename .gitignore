@@ -22,3 +22,4 @@ client/e2e/
 client/non-essential-files.osx.txt
 client/non-essential-files.txt
 client/src/app/app.component.spec.ts
+test-output/

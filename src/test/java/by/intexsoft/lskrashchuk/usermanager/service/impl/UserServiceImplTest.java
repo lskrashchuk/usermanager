@@ -1,12 +1,14 @@
 package by.intexsoft.lskrashchuk.usermanager.service.impl;
 
+import static java.util.Collections.singletonList;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import org.junit.Before;
@@ -48,18 +50,25 @@ public class UserServiceImplTest
 		UserRepository userRepository = mock(UserRepository.class);
 		userServiceImpl.setUserRepository(userRepository);
 		
-		List<User> listWithOneUser = new ArrayList<User>();
 		User user = new User();
 		user.name = "Anna";
-				
-		listWithOneUser.add(user);
-		System.out.println(listWithOneUser);
-		when(userRepository.findAll()).thenReturn(listWithOneUser);
+
+		when(userRepository.findAll()).thenReturn(singletonList(user));
 		List<User> result = userServiceImpl.findAll();
-		System.out.println(result);
 		assertEquals(1, result.size());
 		assertEquals("Anna", result.get(0).name);
 		verify(userRepository).findAll();
+	}
+	
+	@Test
+	public void testFindAll_RepositoryTrowException()
+	{
+		this.userServiceImpl = new UserServiceImpl();
+		UserRepository userRepository = mock(UserRepository.class);
+		userServiceImpl.setUserRepository(userRepository);
+		doThrow(new RuntimeException()).when(userRepository).findAll();
+		List<User> result = userServiceImpl.findAll();
+		assertEquals(null, result);
 	}
 
 }
