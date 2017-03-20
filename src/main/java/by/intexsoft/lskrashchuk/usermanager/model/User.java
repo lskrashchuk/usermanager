@@ -19,15 +19,18 @@ public class User extends AbstractPersistable<Integer>
 	/**
 	 * User name property
 	 */
-	@Column(name = "name")
+	@Column
 	public String name;
+
+	@Column(name = "is_active")
+	public Boolean isActive;
 
 	/**
 	 * @return Returns a string representation of the object User.
 	 */
 	public String toString()
 	{
-		return "User: " + name;
+		return "User: " + name + " " + (isActive ? "active" : "inactive");
 	}
 
 }

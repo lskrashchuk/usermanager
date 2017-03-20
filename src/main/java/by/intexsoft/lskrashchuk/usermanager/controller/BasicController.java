@@ -1,10 +1,12 @@
 package by.intexsoft.lskrashchuk.usermanager.controller;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -41,9 +43,10 @@ public class BasicController
 	 * @return all users list
 	 */
 	@RequestMapping("/users")
-	public String getAllUsers()
+	public List<User> getAllUsers()
 	{
 		LOGGER.info("Users page browsing starts");
-		return userService.findAll().stream().map(User::toString).collect(Collectors.joining("<br>"));
+//		return userService.findAll().stream().map(User::toString).collect(Collectors.joining("<br>"));
+		return userService.findAll();
 	}
 }

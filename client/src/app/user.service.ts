@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from './user';
+import { Http } from "@angular/http";
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class UserService
@@ -8,21 +10,21 @@ export class UserService
    * Значение для последнего ИД,
    * с помощью которого, мы будем имитировать автоматическое увеличение ИД
    * */
-  lastId: number = 0;
+  lastId: number = 4;
 
   /*
    * Массив, в котором будут храниться записи
    * */
   users: User[] = [];
 
-  constructor() {}
+  constructor(private http:Http) {}
 
   /*
    * Имитируем метод POST при обращении к /users
    * */
   addUser( user: User ): UserService
   {
-    if( !user.firstName )
+    if( !user.name )
     {
       return;
     }
@@ -68,10 +70,26 @@ export class UserService
   /*
    * Имитируем метод GET при обращении к /users
    * */
+/*
   getAllUsers(): User[]
   {
-    return this.users;
+//    return this.users;
+    return [{"id":1,"name":"Tatiana","isActive":true,"new":false},{"id":2,"name":"Marta","isActive":true,"new":false},{"id":3,"name":"Alex","isActive":true,"new":false},{"id":4,"name":"Igor","isActive":true,"new":false}];
   }
+*/
+
+  getAllUsers():Promise<User[]> {
+    return this.http.get('users')
+      .toPromise()
+      .then(responce => responce.json())
+      .catch(this.handleError);
+  }
+
+  private handleError(error:any):Promise<any> {
+    console.error('Error', error);
+    return Promise.reject(error.message || error);
+  }
+
 
   /*
    * Имитируем метод GET при обращении к /users/:id

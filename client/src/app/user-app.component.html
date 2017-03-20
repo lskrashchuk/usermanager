@@ -2,7 +2,7 @@
   <header class="header">
     <h1>Пользователи</h1>
 
-    <input class="new-user" placeholder="Добавить пользователя" autofocus="" [(ngModel)]="newUser.firstName" (keyup.enter)="addUser()">
+    <input class="new-user" placeholder="Добавить пользователя" autofocus="" [(ngModel)]="newUser.name" (keyup.enter)="addUser()">
    </header>
 
   <section class="main" *ngIf="users.length > 0">
@@ -11,7 +11,7 @@
         <div class="view">
           <input class="toggle" type="checkbox" (click)="toggleUserActive(user)" [checked]="user.isActive">
 
-          <label>{{user.firstName}}</label>
+          <label>{{user.name}}</label>
           <button class="destroy" (click)="removeUser(user)"></button>
         </div>
       </li>

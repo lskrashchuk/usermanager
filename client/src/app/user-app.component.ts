@@ -3,7 +3,7 @@ import { User } from './user';
 import { UserService } from './user.service';
 
 @Component({
-  moduleId: module.id,
+  moduleId: module.id.toString(),
   selector: 'app-user',
   templateUrl: 'user-app.component.html',
   styleUrls: ['user-app.component.css'],
@@ -38,3 +38,4 @@ export class UserAppComponent
     return this.userService.getAllUsers();
   }
 }
+
