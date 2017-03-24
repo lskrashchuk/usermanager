@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from './user';
-import { Http } from "@angular/http";
+import { Http, Response, Headers, RequestOptions } from "@angular/http";
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
@@ -38,6 +38,14 @@ export class UserService
 
     return this;
   }
+/*
+  addUser(user: User) {
+    return this.http.post(user, this.generateOptions())
+      .map((response: Response) => response.status === 201)
+      .catch(this.handleError);
+  }
+*/
+
 
   /*
    * Имитируем метод DELETE при обращении к /users/:id

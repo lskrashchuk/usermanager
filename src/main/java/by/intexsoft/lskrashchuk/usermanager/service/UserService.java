@@ -10,5 +10,21 @@ import by.intexsoft.lskrashchuk.usermanager.model.User;
  */
 public interface UserService
 {
+    /**
+     * Find all {@link User}s 
+     * @return list of {@link User} 
+     */
 	List<User> findAll();
+	
+    /**
+     * Save {@link User} entity
+     */
+    User save(User user);
+    
+    /**
+     * Delete {@link User} by identifier
+     * @param id
+     */
+    void delete(Integer id);
+	
 }

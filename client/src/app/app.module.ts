@@ -6,7 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent }  from './app.component';
 import { TitleComponent }  from './title.component';
-//import { UserAppComponent }  from './user-app.component';
+import { UserAppComponent }  from './user-app.component';
 
 import '@angular/common';
 
@@ -16,8 +16,7 @@ const appRoutes:Routes = [
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, HttpModule, RouterModule.forRoot(appRoutes) ],
-//  declarations: [ AppComponent, TitleComponent, UserAppComponent ],
-  declarations: [ AppComponent, TitleComponent ],
+  declarations: [ AppComponent, TitleComponent, UserAppComponent ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

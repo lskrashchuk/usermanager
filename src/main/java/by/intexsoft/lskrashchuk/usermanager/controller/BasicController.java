@@ -6,8 +6,13 @@ import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import by.intexsoft.lskrashchuk.usermanager.model.User;
@@ -49,4 +54,38 @@ public class BasicController
 //		return userService.findAll().stream().map(User::toString).collect(Collectors.joining("<br>"));
 		return userService.findAll();
 	}
+	
+	
+    /**
+     * Delete {@link User} by identifier
+     * @param id
+     */
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<?> deleteUser(@PathVariable("id") Integer id) {
+        LOGGER.info("Start deleteUser");
+        try {
+            userService.delete(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (NullPointerException e) {
+            LOGGER.error("Exception in deleteUser" + e.getLocalizedMessage());
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+    
+    /**
+     * Save {@link User} 
+     * @param user
+     */
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<?> saveUser(@RequestBody User user) {
+        LOGGER.info("Start createUser");
+        try {
+            return new ResponseEntity<>(userService.save(user), HttpStatus.CREATED);
+        } catch (NullPointerException e) {
+            LOGGER.error("Exception in createUser" + e.getLocalizedMessage());
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+
 }

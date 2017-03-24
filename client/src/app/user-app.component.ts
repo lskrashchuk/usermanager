@@ -15,7 +15,14 @@ export class UserAppComponent
 {
   newUser: User = new User();
 
+  users : User[] = [];
+
   constructor( private userService: UserService ) {}
+
+  ngOnInit(): void
+  {
+    this.loadUsers();
+  }
 
   toggleUserActive( user:User )
   {
@@ -33,9 +40,9 @@ export class UserAppComponent
     this.userService.deleteUserById( user.id );
   }
 
-  get users()
+  loadUsers(): void
   {
-    return this.userService.getAllUsers();
+    this.userService.getAllUsers().then(loadedUsers => this.users = loadedUsers);
   }
 }
 
