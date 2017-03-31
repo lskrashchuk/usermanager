@@ -26,5 +26,13 @@ public interface UserService
      * @param id
      */
     void delete(Integer id);
+
+	User findByUsername(String username);
+
+	User find(Integer id);
+
+	Object update(User user);
+
+	Object create(User user);
 	
 }

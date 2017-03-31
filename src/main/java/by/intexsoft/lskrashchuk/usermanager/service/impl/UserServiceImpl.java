@@ -61,4 +61,28 @@ public class UserServiceImpl implements UserService
 		userRepository.delete(id);
 	}
 
+	@Override
+	public User findByUsername(String username)
+	{
+        return userRepository.findByUsername(username);
+	}
+
+	@Override
+	public User find(Integer id)
+	{
+        return userRepository.findOne(id);
+	}
+
+	@Override
+	public Object update(User user)
+	{
+        return userRepository.save(user);
+	}
+
+	@Override
+	public Object create(User user)
+	{
+        return userRepository.save(user);
+	}
+
 }
