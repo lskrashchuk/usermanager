@@ -17,7 +17,9 @@
   	<context:annotation-config />
  	
  	<context:component-scan	base-package="by.intexsoft.lskrashchuk.usermanager.service" /> 
-
+ 	<context:component-scan base-package="by.intexsoft.lskrashchuk.usermanager.security.service"/>
+    <context:component-scan base-package="by.intexsoft.lskrashchuk.usermanager.security.config"/>
+ 	
  	<jpa:repositories base-package="by.intexsoft.lskrashchuk.usermanager.repository" />
  	
 	<bean id="placeholderConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">

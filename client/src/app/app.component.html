@@ -1,0 +1,23 @@
+<div id="header-wrapper">
+  <div id="header" class="container">
+  <h1 id="logo"><a routerLink="/">URL Shortener</a></h1>
+  <p>is used to create short URLs that can be easily shared, tweeted, or emailed to friends</p>
+    <div align="center">
+    </div>
+    <nav id="nav">
+            <ul routerLinkActive="active">
+                <li *ngIf="canWorkWithUser()"><a routerLink="/users">Users</a></li>
+                <li *ngIf="!isLoggedIn()">
+                    <a routerLink="/login">Login</a>
+                </li>
+              <li *ngIf="!isLoggedIn()">
+                <a routerLink="/">Sign up</a>
+              </li>
+                <li *ngIf="isLoggedIn()">
+                    <a (click)="logout()">Logout</a>
+                </li>
+            </ul>
+    </nav>
+  <router-outlet></router-outlet>
+</div>
+</div>

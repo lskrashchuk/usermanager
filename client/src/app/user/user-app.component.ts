@@ -6,14 +6,13 @@ import { UserService } from './user.service';
   moduleId: module.id.toString(),
   selector: 'app-user',
   templateUrl: 'user-app.component.html',
-  styleUrls: ['user-app.component.css'],
 
   providers: [ UserService ]
 })
 
 export class UserAppComponent
 {
-  newUser: User = new User();
+//  newUser: User = new User();
 
   users : User[] = [];
 
@@ -29,11 +28,13 @@ export class UserAppComponent
     this.userService.toggleUserActive( user );
   }
 
+/*
   addUser()
   {
     this.userService.addUser( this.newUser );
     this.newUser = new User();
   }
+*/
 
   removeUser( user:User )
   {
