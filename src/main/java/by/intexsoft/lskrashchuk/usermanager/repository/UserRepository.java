@@ -13,6 +13,6 @@ import by.intexsoft.lskrashchuk.usermanager.model.User;
 
 public interface UserRepository extends JpaRepository<User, Integer>
 {
-    @Query("select u from User u where u.email = :username")
+    @Query("select u from User u where u.username = :username")
 	User findByUsername(@Param("username") String username);
 }

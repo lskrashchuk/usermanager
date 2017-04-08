@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
 /**
  * Handle requests for authentication operations
  * Works with {@link TokenService}
@@ -43,9 +45,9 @@ public class AuthenticationController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<?> authenticate(@RequestBody User requestUser) {
         LOGGER.info("Start authentication");
-        if (isNotEmpty(requestUser.email) && isNotEmpty(requestUser.password)) {
-            User user = userService.findByUsername(requestUser.email);
-            String token = tokenService.generate(user, requestUser.password);
+        if (isNotEmpty(requestUser.username) && isNotEmpty(requestUser.password)) {
+            User user = userService.findByUsername(requestUser.username);
+            String token = tokenService.generate(user, DigestUtils.md5Hex(requestUser.password));
             if (token != null) {
                 LOGGER.info("Authentication successful! Returning token");
                 user.password = EMPTY;

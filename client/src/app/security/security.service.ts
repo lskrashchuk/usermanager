@@ -24,7 +24,6 @@ export class SecurityService implements CanActivate {
 
     private static denyAccess(): boolean {
         alert('You don\'t have permissions!');
-        //this.router.navigate(['/login']);
         return false;
     }
 

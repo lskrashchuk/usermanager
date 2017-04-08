@@ -18,7 +18,7 @@ export class AppComponent  {
   public isLoggedIn(): boolean {
     const user: User = JSON.parse(localStorage.getItem("CURRENT_USER"));
     if (user) {
-      this.name = user.email;
+      this.name = user.username;
       return true;
     }
     return false;

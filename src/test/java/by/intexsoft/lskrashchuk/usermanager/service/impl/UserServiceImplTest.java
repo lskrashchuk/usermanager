@@ -16,6 +16,7 @@ import org.junit.Test;
 
 import by.intexsoft.lskrashchuk.usermanager.model.User;
 import by.intexsoft.lskrashchuk.usermanager.repository.UserRepository;
+import by.intexsoft.lskrashchuk.usermanager.service.UserService;
 
 public class UserServiceImplTest
 {

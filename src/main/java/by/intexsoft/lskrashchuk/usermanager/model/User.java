@@ -29,8 +29,8 @@ public class User extends AbstractPersistable<Integer>
 	/**
 	 * User email
 	 */
-	@Column(nullable = false)
-	public String email;
+	@Column(name = "email", nullable = false)
+	public String username;
 
 	/**
 	 * User password
