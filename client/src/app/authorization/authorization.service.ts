@@ -10,10 +10,9 @@ export class AuthorizationService {
     }
 
     login(user: User): Observable<Boolean> {
-        console.log('в начале метода логин');
         const body = JSON.stringify({username: user.username, password: user.password});
         const options = new RequestOptions({headers: new Headers({'Content-Type': 'application/json'})});
-        return this.http.post('/login', body, options)
+        return this.http.post('/auth/login', body, options)
             .map(this.extractData)
             .catch(AuthorizationService.handleError);
     }

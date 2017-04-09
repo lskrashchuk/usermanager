@@ -43,7 +43,7 @@ export class UserAppComponent
 
   loadUsers(): void
   {
-    this.userService.getAllUsers().then(loadedUsers => this.users = loadedUsers);
+    this.userService.loadAll().then(loadedUsers => this.users = loadedUsers);
   }
 }
 

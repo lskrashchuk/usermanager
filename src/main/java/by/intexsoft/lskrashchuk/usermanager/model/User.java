@@ -1,15 +1,12 @@
 package by.intexsoft.lskrashchuk.usermanager.model;
 
-import java.util.List;
+import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.*;
-
-import org.springframework.data.jpa.domain.AbstractPersistable;
+import java.util.List;
 
 /**
  * User entity class
- * 
- *
  */
 @Entity
 @Table(name = "user_profile")
@@ -44,7 +41,7 @@ public class User extends AbstractPersistable<Integer>
 	public List<Authority> authorities;
 
 	/**
-	 * @return Returns a string representation of the object User.
+	 * @return string representation of the object User.
 	 */
 	public String toString()
 	{

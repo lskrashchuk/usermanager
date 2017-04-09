@@ -1,15 +1,14 @@
 package by.intexsoft.lskrashchuk.usermanager.service.impl;
 
-import java.util.List;
-
+import by.intexsoft.lskrashchuk.usermanager.model.User;
+import by.intexsoft.lskrashchuk.usermanager.repository.UserRepository;
+import by.intexsoft.lskrashchuk.usermanager.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import by.intexsoft.lskrashchuk.usermanager.model.User;
-import by.intexsoft.lskrashchuk.usermanager.repository.UserRepository;
-import by.intexsoft.lskrashchuk.usermanager.service.UserService;
+import java.util.List;
 
 /**
  * User service implementation
@@ -40,11 +39,11 @@ public class UserServiceImpl implements UserService
 		try
 		{
 			List<User> result = userRepository.findAll();
-			LOGGER.info("Ñompleted successfully");
+			LOGGER.info("Completed successfully");
 			return result;
 		} catch (Exception e)
 		{
-			LOGGER.error("Ñompleted with error");
+			LOGGER.error("Completed with error");
 			return null;
 		}
 	}

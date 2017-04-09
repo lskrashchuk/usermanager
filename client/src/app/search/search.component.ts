@@ -7,7 +7,9 @@ import {SearchService} from "./search.service";
 @Component({
   selector: 'search-component',
   templateUrl: './search.component.html',
-  styleUrls: ['../main.css']
+  styleUrls: ['../main.css'],
+
+  providers: [ SearchService ]
 })
 export class SearchComponent implements OnInit {
   searchForm: FormGroup;
@@ -25,6 +27,7 @@ export class SearchComponent implements OnInit {
 
   onSubmit() {
     this.loading = true;
+/*
     this.searchService.search(this.searchForm.value.search)
       .subscribe(
         result => result && this.router.navigate(['/']),
@@ -33,6 +36,7 @@ export class SearchComponent implements OnInit {
           this.loading = false;
         }
       );
+*/
   }
 
 }

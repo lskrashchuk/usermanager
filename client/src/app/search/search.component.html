@@ -1,11 +1,14 @@
-<wicket:panel>
-	<form wicket:id="form">
-		<label> 
-			<input type="text" wicket:id="searchField" />
-		</label> 
-		<a class="button icon fa-search" wicket:id="searchLink">Search
-			URL INFO / TAGS</a>
+	<form name="form" novalidate [formGroup]="serachForm" (ngSubmit)="onSubmit()">
+    <br/>
+    <label>
+			<input type="text" class="form-control" placeholder="Enter Search String..." name="searach" formControlName="search" required/>
+		</label>
+    <br/>
+    <div class="form-group">
+		<button type="submit" [disabled]="searchForm.invalid || loading">Search
+      URL INFO / TAGS</button>
+    </div>
+    <div *ngIf="error" class="alert alert-danger">{{error}}</div>
 
 	</form>
 
-</wicket:panel>

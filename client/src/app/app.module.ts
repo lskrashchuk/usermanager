@@ -8,8 +8,8 @@ import {AuthorizationService} from "./authorization/authorization.service";
 
 
 import { AppComponent }  from './app.component';
-import { TitleComponent }  from './title.component';
 import { UserAppComponent }  from './user/user-app.component';
+import { SearchComponent }  from './search/search.component';
 
 import '@angular/common';
 import {SecurityService} from "./security/security.service";
@@ -18,11 +18,12 @@ import {SecurityService} from "./security/security.service";
 const appRoutes: Routes = [
   {path: '', redirectTo: '', pathMatch: 'full'},
   {path: 'login', component: AuthorizationComponent},
+  {path: 'search', component: SearchComponent},
 ];
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, ReactiveFormsModule, HttpModule, RouterModule.forRoot(appRoutes) ],
-  declarations: [ AppComponent, TitleComponent, UserAppComponent, AuthorizationComponent ],
+  declarations: [ AppComponent, UserAppComponent, SearchComponent, AuthorizationComponent ],
   bootstrap:    [ AppComponent ],
   providers:    [ AuthorizationService, SecurityService ],
 })

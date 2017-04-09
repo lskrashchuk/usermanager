@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from './user';
 import { Http, Response, Headers, RequestOptions } from "@angular/http";
 import 'rxjs/add/operator/toPromise';
+import {Observable} from "rxjs";
 
 @Injectable()
 export class UserService
@@ -86,12 +87,28 @@ export class UserService
   }
 */
 
+/*
   getAllUsers():Promise<User[]> {
-    return this.http.get('users')
+    return this.http.get('/user/users')
       .toPromise()
       .then(responce => responce.json())
       .catch(this.handleError);
   }
+*/
+
+  loadAll(): Promise<User[]> {
+    return this.http.get('/user', this.generateOptions())
+      .toPromise()
+      .then((response: Response) => {
+        if(response.status != 200) {
+          throw new Error('Error while loading all entities! code status: ' + response.status);
+        } else {
+          return response.json();
+        }
+      })
+  }
+
+
 
   private handleError(error:any):Promise<any> {
     console.error('Error', error);
@@ -119,5 +136,14 @@ export class UserService
     } );
 
     return updatedUser;
+  }
+
+
+  private generateOptions(): RequestOptions {
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'x-auth-token': JSON.parse(localStorage.getItem("CURRENT_USER")).token
+    });
+    return new RequestOptions({headers: headers});
   }
 }
