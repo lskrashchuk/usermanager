@@ -14,5 +14,5 @@ import org.springframework.data.repository.query.Param;
 public interface TagRepository extends JpaRepository<Tag, Integer>
 {
     @Query("select t from Tag t where t.name = :name")
-	User findByName(@Param("name") String name);
+	Tag findByName(@Param("name") String name);
 }

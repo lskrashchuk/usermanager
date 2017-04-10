@@ -1,5 +1,4 @@
 import {NgModule} from "@angular/core";
-import {UserAppComponent} from "./user-app.component";
 import {BrowserModule} from "@angular/platform-browser";
 import {HttpModule} from "@angular/http";
 import {CommonModule} from "@angular/common";
@@ -18,7 +17,6 @@ import {UserRoutingModule} from "./user-routing.module";
         UserRoutingModule
     ],
     declarations: [
-        UserAppComponent
     ],
     providers: [
         UserService

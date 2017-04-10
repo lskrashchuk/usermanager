@@ -25,7 +25,7 @@ public class AuthorityController {
     /**
      * Return json-information about all authorities in database
      *
-     * @return list of {@link by.intexsoft.model.Authority}s
+     * @return list of {@link by.intexsoft.lskrashchuk.usermanager.model.Authority}s
      */
     @RequestMapping
     public ResponseEntity<?> loadAuthorities() {

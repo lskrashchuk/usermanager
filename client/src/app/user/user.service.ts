@@ -96,8 +96,8 @@ export class UserService
   }
 */
 
-  loadAll(): Promise<User[]> {
-    return this.http.get('/user', this.generateOptions())
+  loadAll(url: string): Promise<User[]> {
+    return this.http.get(url, this.generateOptions())
       .toPromise()
       .then((response: Response) => {
         if(response.status != 200) {

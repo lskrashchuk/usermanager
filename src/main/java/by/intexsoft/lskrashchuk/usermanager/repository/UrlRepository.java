@@ -12,6 +12,6 @@ import org.springframework.data.repository.query.Param;
 
 public interface UrlRepository extends JpaRepository<Url, Integer>
 {
-    @Query("select u from Url u where u.urlcode = :urlcode")
-    Url findByUrlCode(@Param("urlcode") String username);
+    @Query("select u from Url u where u.urlCode = :urlCode")
+    Url findByUrlCode(@Param("urlCode") String urlCode);
 }

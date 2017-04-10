@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface UrlService {
 
-	Url getUrl(Long id);
+	Url getUrl(Integer id);
 	
 	void saveOrUpdate(Url url);
 	

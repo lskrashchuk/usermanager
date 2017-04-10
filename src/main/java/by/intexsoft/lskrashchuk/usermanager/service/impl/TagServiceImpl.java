@@ -30,16 +30,10 @@ public class TagServiceImpl implements TagService {
 
 	@Override
 	public void delete(Tag tag) {
-		Tag fullTag = tagRepository.getWithUrls(tag.getId());
-		if (fullTag.getUrls().size() == 0) {
+		if (tag.getUrls().size() == 0) {
 			tagRepository.delete(tag.getId());
 			LOGGER.info("Tag deleted: {}", tag.getName());
 		}
-	}
-
-	@Override
-	public Tag getWithUrls(Tag tag) {
-		return tagRepository.getWithUrls(tag.getId());
 	}
 
 	@Override

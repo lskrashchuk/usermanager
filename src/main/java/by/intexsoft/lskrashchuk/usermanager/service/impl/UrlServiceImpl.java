@@ -23,8 +23,8 @@ public class UrlServiceImpl implements UrlService {
 	private TagService tagService;
 
 	@Override
-	public Url getUrl(Long id) {
-		return urlRepository.findById(id);
+	public Url getUrl(Integer id) {
+		return urlRepository.findOne(id);
 
 	}
 
@@ -35,24 +35,20 @@ public class UrlServiceImpl implements UrlService {
 			urlRepository.save(url);
 			LOGGER.info("Url inserted: {}", url.getUrlCode());
 		} else {
-			urlRepository.update(url);
+			urlRepository.save(url);
 			LOGGER.info("Url updated: {}", url.getUrlCode());
 		}
 	}
 
 	@Override
 	public void delete(Url url) {
-//		Url fullUrl = urlRepository.getWithTags(url.getId());
 		urlRepository.delete(url.getId());
-//		for (Tag tag : fullUrl.getTags()) {
-//			tagService.delete(tag);
-//		}
 		LOGGER.info("Url deleted: {}", url.getUrlCode());
 	}
 
 	@Override
 	public Url find(String urlCode) {
-		return urlRepository.find(urlCode);
+		return urlRepository.findByUrlCode(urlCode);
 	}
 
 	@Override

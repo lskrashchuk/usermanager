@@ -13,6 +13,7 @@ import { SearchComponent }  from './search/search.component';
 
 import '@angular/common';
 import {SecurityService} from "./security/security.service";
+import {UserModule} from "./user/user.module";
 
 
 const appRoutes: Routes = [
@@ -22,7 +23,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule, ReactiveFormsModule, HttpModule, RouterModule.forRoot(appRoutes) ],
+  imports:      [ UserModule, BrowserModule, FormsModule, ReactiveFormsModule, HttpModule, RouterModule.forRoot(appRoutes) ],
   declarations: [ AppComponent, UserAppComponent, SearchComponent, AuthorizationComponent ],
   bootstrap:    [ AppComponent ],
   providers:    [ AuthorizationService, SecurityService ],

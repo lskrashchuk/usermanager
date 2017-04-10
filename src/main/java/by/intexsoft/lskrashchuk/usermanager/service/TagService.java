@@ -13,8 +13,6 @@ public interface TagService {
 
     Tag find(String name);
     
-    Tag getWithUrls(Tag tag);
-    
     List<Tag> getAll();
 
 }

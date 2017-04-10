@@ -5,16 +5,8 @@ import {UserAppComponent} from "./user-app.component";
 
 export const routes: Routes = [
     {
-        path: 'users', component: UserAppComponent, canActivate: [SecurityService], data: {roles: ['ROLE_ADMIN']},
- /*       children: [
-            {
-                path: 'users',
-                component: UserAppComponent,
-                canActivate: [SecurityService],
-                data: {roles: ['ROLE_ADMIN']}
-            }
-        ]
- */   },
+        path: 'users', component: UserAppComponent, canActivate: [SecurityService], data: {roles: ['ROLE_ADMIN']}
+    }
 ];
 
 @NgModule({

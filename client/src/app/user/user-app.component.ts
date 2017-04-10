@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
 import { User } from './user';
 import { UserService } from './user.service';
 
@@ -6,6 +7,7 @@ import { UserService } from './user.service';
   moduleId: module.id.toString(),
   selector: 'app-user',
   templateUrl: 'user-app.component.html',
+  styleUrls: ['./user-app.component.css'],
 
   providers: [ UserService ]
 })
@@ -15,8 +17,11 @@ export class UserAppComponent
 //  newUser: User = new User();
 
   users : User[] = [];
+  loading = false;
 
-  constructor( private userService: UserService ) {}
+
+
+  constructor( private userService: UserService, private router: Router ) {}
 
   ngOnInit(): void
   {
@@ -43,7 +48,13 @@ export class UserAppComponent
 
   loadUsers(): void
   {
-    this.userService.loadAll().then(loadedUsers => this.users = loadedUsers);
+    this.userService.loadAll('/user').then(loadedUsers => this.users = loadedUsers);
+  }
+
+  logError(error: Error): void {
+    this.loading = false;
+    console.error('There was an error: ' + error.message ? error.message : error.toString());
+    this.router.navigate(['/']);
   }
 }
 

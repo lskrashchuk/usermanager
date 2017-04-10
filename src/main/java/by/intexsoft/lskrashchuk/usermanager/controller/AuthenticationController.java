@@ -1,20 +1,22 @@
 package by.intexsoft.lskrashchuk.usermanager.controller;
 
-import by.intexsoft.lskrashchuk.usermanager.model.dto.TokenDTO;
 import by.intexsoft.lskrashchuk.usermanager.model.User;
+import by.intexsoft.lskrashchuk.usermanager.model.dto.TokenDTO;
 import by.intexsoft.lskrashchuk.usermanager.security.service.TokenService;
 import by.intexsoft.lskrashchuk.usermanager.service.UserService;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
-
-import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  * Handle requests for authentication operations
@@ -37,7 +39,7 @@ public class AuthenticationController {
 
     /**
      * Login method
-     * Find {@link by.intexsoft.model.User} in database by username
+     * Find {@link by.intexsoft.lskrashchuk.usermanager.model.User} in database by username
      * Generate token from {@link TokenService}
      *
      * @return {@link TokenDTO} model
